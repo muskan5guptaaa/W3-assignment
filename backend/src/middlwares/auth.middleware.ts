@@ -23,7 +23,7 @@ export const authMiddleware = (
   next: NextFunction
 ): void  => {
   const authHeader = req.headers.authorization;
- 
+ console.log("Authorization header:", authHeader)
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
       res.status(401).json({ message: "Missing or invalid token" });
         return;
@@ -37,7 +37,7 @@ export const authMiddleware = (
  
     req.users = decoded; // set user on req
     console.log("Decoded token:", decoded);
-    console.log("User from token:", req.users);
+   
  
     next();
   } catch (error) {
